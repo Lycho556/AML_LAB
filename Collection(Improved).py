@@ -3,11 +3,12 @@ import csv
 import datetime
 
 # 设置串口参数/dev/ttyACM0
-ser_screen = serial.Serial('/dev/ttyACM0', 32500, timeout=0.1)
-ser_imu = serial.Serial('/dev//dev/ttyprintk', 74880, timeout=0.1)
+ser_screen = serial.Serial('/dev/ttyACM0', 31250, timeout=0.1)
+ser_imu = serial.Serial('/dev/ttyUSB0', 74880, timeout=0.1)
+
 
 # 打开CSV文件以写入模式
-csv_file_path = 'row_data/signature_Zekai/False_1'
+csv_file_path = 'row_data/signature_test/False_1'
 start_record = False
 
 with open(csv_file_path, 'w', newline='') as csv_file:
@@ -21,7 +22,7 @@ with open(csv_file_path, 'w', newline='') as csv_file:
             # 从串口读取一行数据
             line_screen = ser_screen.readline().decode('utf-8', errors='ignore').strip()
             line_imu = ser_imu.readline().decode('utf-8', errors='ignore').strip()
-
+            print(line_screen)
             if line_screen and line_imu:  # 确保数据有效
                 current_time = datetime.datetime.now()
                 data_screen = line_screen.split('\t')
