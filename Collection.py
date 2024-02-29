@@ -8,7 +8,7 @@ ser_imu = serial.Serial('/dev/ttyUSB0', 74880, timeout=0.1)
 
 
 # 打开CSV文件以写入模式
-csv_file_path = 'row_data/signature_test/False_1'
+csv_file_path = 'row_data/signature_zhiyu/True_5'
 start_record = False
 
 with open(csv_file_path, 'w', newline='') as csv_file:
